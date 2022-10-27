@@ -1,3 +1,5 @@
+package Pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,13 +13,16 @@ public class LoginPage {
     @FindBy(css = "[type=submit]")
     WebElement btnSubmit;
 
+    @FindBy(className = "oxd-userdropdown-img")
+    public WebElement imgProfile;
+
     public LoginPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
 
-    public void doLogin(){
-        txtUsername.sendKeys("admin");
-        txtPassword.sendKeys("admin123");
+    public void doLogin(String username, String password){
+        txtUsername.sendKeys(username);
+        txtPassword.sendKeys(password);
         btnSubmit.click();
     }
 }
